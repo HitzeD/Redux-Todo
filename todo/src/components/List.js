@@ -1,8 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addItem } from '../actions';
+import styled from 'styled-components';
 
 import Item from './Item';
+
+const Head = styled.div`
+    border-bottom: 1px dashed black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: lightslategray;
+`
+
+const ItemWrap = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+`
 
 class List extends React.Component{
     constructor(props){
@@ -23,12 +37,16 @@ class List extends React.Component{
     render(){
         return (
             <>
-                <h1>Todo List</h1>
-                <input onChange={this.handleChanges} value={this.state.newItem} type="text" placeholder="Accomplished Me..." />
-                <button onClick={this.addItems}>Add Item</button>
-                {this.props.task.map((item, index) => {
-                    return <Item item={item} key={index} />
-                })}
+                <Head>
+                    <h1>Todo List</h1>
+                    <input onChange={this.handleChanges} value={this.state.newItem} type="text" placeholder="Accomplished Me..." />
+                    <button onClick={this.addItems}>Add Item</button>
+                </Head>
+                <ItemWrap>
+                    {this.props.task.map((item, index) => {
+                        return <Item item={item} key={index} />
+                    })}
+                </ItemWrap>
             </>
         )
     }
