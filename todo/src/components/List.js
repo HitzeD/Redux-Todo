@@ -41,16 +41,16 @@ class List extends React.Component{
     render(){
         return (
             <>
-                <Head>
+                <div>
                     <h1>Todo List</h1>
-                    <input onChange={this.handleChanges} value={this.state.newItem} type="text" placeholder="Accomplished Me..." />
-                    <button onClick={this.addItems}>Add Item</button>
-                </Head>
-                <ItemWrap>
-                    {this.props.task.map(item => {
-                        return <Item onClick={() => this.toggleItem(item.id)} item={item} key={item.id} />
+                    <input onChange={this.handleChanges} value={this.state.newItem} type="text" placeholder="Accomplish Me..." />
+                    <button onClick={this.addItems}>Add Task</button>
+                </div>
+                <div>
+                    {this.props.todo.map(item => {
+                        return <h3 key={item.id} onClick={() => this.toggleItem(item.id)}>{item.task}{item.completed}</h3>
                     })}
-                </ItemWrap>
+                </div>
             </>
         )
     }
@@ -59,7 +59,7 @@ class List extends React.Component{
 const mapStateToProps = state => {
     console.log(state.todo.map(item => {return item.completed}))
     return {
-        task: state.todo,
+        todo: state.todo,
     }
 }
 

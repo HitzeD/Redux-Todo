@@ -12,7 +12,7 @@ const Items = styled.h4`
 `
 
 const Item = props => {
-    return <Items>{props.item.task}</Items>
+    return <h3>{props.item.task}</h3>
 }
 
 export default Item;

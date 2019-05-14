@@ -11,7 +11,7 @@ export const addItem = newItem => {
 export const COMPLETE_ME = 'COMPLETE_ME';
 export const completeMe = id => {
     return {
-        type: ADD_ITEM,
+        type: COMPLETE_ME,
         payload: id
     }
 }
