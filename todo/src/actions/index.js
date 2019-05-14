@@ -7,3 +7,11 @@ export const addItem = newItem => {
         payload: newItem
     };
 }
+
+export const COMPLETE_ME = 'COMPLETE_ME';
+export const completeMe = id => {
+    return {
+        type: ADD_ITEM,
+        payload: id
+    }
+}

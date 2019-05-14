@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../actions';
+import { addItem, completeMe } from '../actions';
 import styled from 'styled-components';
 
 import Item from './Item';
@@ -19,8 +19,8 @@ const ItemWrap = styled.div`
 `
 
 class List extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             newItem: '',
         }
@@ -34,6 +34,10 @@ class List extends React.Component{
         this.setState({ newItem: '' })
     }
 
+    toggleItem = id => {
+        this.props.completeMe(id);
+    }
+
     render(){
         return (
             <>
@@ -43,8 +47,8 @@ class List extends React.Component{
                     <button onClick={this.addItems}>Add Item</button>
                 </Head>
                 <ItemWrap>
-                    {this.props.task.map((item, index) => {
-                        return <Item item={item} key={index} />
+                    {this.props.task.map(item => {
+                        return <Item onClick={() => this.toggleItem(item.id)} item={item} key={item.id} />
                     })}
                 </ItemWrap>
             </>
@@ -53,10 +57,10 @@ class List extends React.Component{
 }
 
 const mapStateToProps = state => {
-    console.log(state.todo);
+    console.log(state.todo.map(item => {return item.completed}))
     return {
         task: state.todo,
     }
 }
 
-export default connect(mapStateToProps, { addItem })(List);
+export default connect(mapStateToProps, { addItem, completeMe })(List);
