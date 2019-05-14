@@ -2,7 +2,7 @@ import { ADD_ITEM, COMPLETE_ME } from '../actions';
 
 const initialState = {
     todo: [
-        {task: 'Add an Item', completed: false, id: 45928}
+        {task: 'Call Mom', completed: false, id: 45928}
     ],
 }
 

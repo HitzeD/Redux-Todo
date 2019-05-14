@@ -17,6 +17,15 @@ const ItemWrap = styled.div`
     flex-flow: row wrap;
     justify-content: space-evenly;
 `
+const Item = styled.h3`
+    border: 1px solid black;
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 41px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 41px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 41px 0px rgba(0,0,0,0.75);
+`
 
 class List extends React.Component{
     constructor(){
@@ -41,16 +50,16 @@ class List extends React.Component{
     render(){
         return (
             <>
-                <div>
+                <Head>
                     <h1>Todo List</h1>
                     <input onChange={this.handleChanges} value={this.state.newItem} type="text" placeholder="Accomplish Me..." />
                     <button onClick={this.addItems}>Add Task</button>
-                </div>
-                <div>
+                </Head>
+                <ItemWrap>
                     {this.props.todo.map(item => {
-                        return <h3 className={`${item.completed ? ' completed' : ''}`} key={item.id} onClick={() => this.toggleItem(item.id)}>{item.task}{item.completed}</h3>
+                        return <Item className={`${item.completed ? ' completed' : ''}`} key={item.id} onClick={() => this.toggleItem(item.id)}>{item.task}{item.completed}</Item>
                     })}
-                </div>
+                </ItemWrap>
             </>
         )
     }
