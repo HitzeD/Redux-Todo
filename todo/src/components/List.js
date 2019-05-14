@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addItem, completeMe } from '../actions';
 import styled from 'styled-components';
 
-import Item from './Item';
+import './component.css';
 
 const Head = styled.div`
     border-bottom: 1px dashed black;
@@ -48,7 +48,7 @@ class List extends React.Component{
                 </div>
                 <div>
                     {this.props.todo.map(item => {
-                        return <h3 key={item.id} onClick={() => this.toggleItem(item.id)}>{item.task}{item.completed}</h3>
+                        return <h3 className={`${item.completed ? ' completed' : ''}`} key={item.id} onClick={() => this.toggleItem(item.id)}>{item.task}{item.completed}</h3>
                     })}
                 </div>
             </>

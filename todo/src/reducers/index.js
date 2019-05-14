@@ -24,7 +24,7 @@ export function reducer(state = initialState, action) {
                     if(item.id === action.payload) {
                         console.log(state)
                         return {
-                        ...state,
+                        ...item,
                         completed: !item.completed
                         }
                     }
